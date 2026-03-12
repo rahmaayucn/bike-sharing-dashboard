@@ -5,16 +5,25 @@ import matplotlib.pyplot as plt
 
 st.title("Bike Sharing Dashboard")
 
-# Baca dataset
 data = pd.read_csv("dashboard/main_data.csv")
 
-# FILTER INTERAKTIF
+# mapping musim
+season_map = {
+    1: "Spring (Musim Semi) 🌸",
+    2: "Summer (Musim Panas) ☀️",
+    3: "Fall / Autumn (Musim Gugur) 🍂",
+    4: "Winter (Musim Dingin) ❄️"
+}
+
+data["season_name"] = data["season"].map(season_map)
+
+# FILTER
 season_filter = st.sidebar.selectbox(
     "Pilih Musim",
-    sorted(data["season"].unique())
+    data["season_name"].unique()
 )
 
-filtered_data = data[data["season"] == season_filter]
+filtered_data = data[data["season_name"] == season_filter]
 
 st.subheader("Dataset Preview")
 st.write(filtered_data.head())
