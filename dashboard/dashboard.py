@@ -2,12 +2,15 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 st.title("Bike Sharing Dashboard")
 
-data = pd.read_csv("dashboard/main_data.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(BASE_DIR, "main_data.csv")
 
-# FILTER
+data = pd.read_csv(data_path)
+
 season_filter = st.sidebar.selectbox(
     "Pilih Musim",
     sorted(data["season"].unique())
