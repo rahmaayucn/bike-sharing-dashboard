@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.title("Bike Sharing Dashboard")
 
-data = pd.read_csv("main_data.csv")
+data = pd.read_csv("dashboard/main_data.csv")
 
 # FILTER
 season_filter = st.sidebar.selectbox(
