@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 
 st.title("Bike Sharing Dashboard")
 
-data = pd.read_csv("main_data.csv")
+# Baca dataset
+data = pd.read_csv("dashboard/main_data.csv")
 
-# FILTER
+# FILTER INTERAKTIF
 season_filter = st.sidebar.selectbox(
     "Pilih Musim",
     sorted(data["season"].unique())
