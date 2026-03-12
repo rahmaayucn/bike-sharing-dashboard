@@ -9,10 +9,10 @@ data = pd.read_csv("dashboard/main_data.csv")
 
 # mapping musim
 season_map = {
-    1: "Spring (Musim Semi) 🌸",
-    2: "Summer (Musim Panas) ☀️",
-    3: "Fall / Autumn (Musim Gugur) 🍂",
-    4: "Winter (Musim Dingin) ❄️"
+    1: "1. Musim Semi",
+    2: "2. Musim Panas",
+    3: "3. Musim Gugur",
+    4: "4. Musim Dingin"
 }
 
 data["season_name"] = data["season"].map(season_map)
