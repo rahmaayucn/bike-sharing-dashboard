@@ -5,12 +5,25 @@ import matplotlib.pyplot as plt
 
 st.title("Bike Sharing Dashboard")
 
-data = pd.read_csv("../data/day.csv")
+data = pd.read_csv("main_data.csv")
 
-st.write("Dataset Preview")
-st.write(data.head())
+# FILTER
+season_filter = st.sidebar.selectbox(
+    "Pilih Musim",
+    sorted(data["season"].unique())
+)
 
-fig, ax = plt.subplots()
-sns.barplot(x="season", y="cnt", data=data, ax=ax)
+filtered_data = data[data["season"] == season_filter]
+
+st.subheader("Dataset Preview")
+st.write(filtered_data.head())
+
+st.subheader("Rata-rata Penyewaan Sepeda per Bulan")
+
+fig, ax = plt.subplots(figsize=(8,5))
+sns.barplot(x="mnth", y="cnt", data=filtered_data, ax=ax)
+
+ax.set_xlabel("Bulan")
+ax.set_ylabel("Jumlah Penyewaan")
 
 st.pyplot(fig)
